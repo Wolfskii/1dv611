@@ -1,0 +1,49 @@
+<div
+  fxLayout="row"
+  fxLayoutAlign="start center"
+>
+  <h1>Mina fakturor</h1>
+</div>
+
+
+
+<div id="invoices">
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title class="head">Status</mat-panel-title>
+    <mat-panel-title class="head">Belopp</mat-panel-title>
+    <mat-panel-title class="head">Förfallodatum</mat-panel-title>
+    <mat-panel-title class="head">Se faktura</mat-panel-title>
+  </mat-expansion-panel-header>
+  </mat-expansion-panel>
+
+<mat-expansion-panel *ngFor="let invoice of invoices.Content.InvoiceParts">
+  <mat-expansion-panel-header>
+    <mat-panel-title *ngIf="!paidInFull(invoice.RemainingAmount)">
+      Obetald 
+      <mat-icon class="red">error_outline</mat-icon>
+    </mat-panel-title>
+    <mat-panel-title *ngIf="paidInFull(invoice.RemainingAmount)">
+      Betald 
+      <mat-icon class="green">check_circle_outline</mat-icon>
+    </mat-panel-title>
+    <mat-panel-title>
+     {{ invoice.Amount }}
+    </mat-panel-title>
+    <mat-panel-title>
+      {{ invoice.PresentDueDate }}
+    </mat-panel-title>
+    <mat-panel-title>
+      <button (click)="openPDF(invoice.InvoiceNumber)">
+        <mat-icon class="red">picture_as_pdf</mat-icon>
+      </button>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-action-row>
+    <mat-panel-description>Kvarvarande belopp: {{ invoice.RemainingAmount }}</mat-panel-description>
+    <mat-panel-description>Fakturadatum: {{ invoice.InvoiceDate }}</mat-panel-description>
+    <mat-panel-description>Fakturanummer: {{ invoice.InvoiceNumber }}</mat-panel-description>
+    <mat-panel-description>FakturaId: {{ invoice.InvoiceId }}</mat-panel-description>
+  </mat-action-row>
+</mat-expansion-panel>
+</div>

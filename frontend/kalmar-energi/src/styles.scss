@@ -1,0 +1,83 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+
+// Custom typography for the Kalmar Energi theme
+$kalmar-energi-typography: mat-typography-config(
+  $font-family: 'Arial, sans-serif',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core($kalmar-energi-typography);
+
+// Custom Kalmar Energi color palettes
+$brand-blue: (
+  50: #E0F5FC,
+  100: #B3E6F8,
+  200: #80D6F3,
+  300: #50BDE9, // Secondary
+  400: #26B9EA,
+  500: #00ADE6, // Primary
+  600: #00A6E3,
+  700: #0096C6, // Tertiary
+  800: #0093DB,
+  900: #0083D5,
+  contrast: (
+    A100: #FCFEFF,
+    A200: #C9E8FF,
+    A400: #96D2FF,
+    A700: #7DC6FF
+  )
+);
+
+$brand-green: (
+  50 : #EDFAE9,
+  100 : #D3F3C8,
+  200 : #B6ECA3,
+  300 : #99E27A, // Secondary
+  400 : #83DE63,
+  500 : #6DD847, // Primary
+  600 : #65D440,
+  700 : #5EB73D, // Tertiary
+  800 : #50C82F,
+  900 : #3EBF20,
+  contrast: (
+    A100 : #F9FFF7,
+    A200 : #CEFFC4,
+    A400 : #A4FF91,
+    A700 : #8EFF78
+  )    
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$kalmar-energi-primary: mat-palette($brand-blue, 500, 300, 700);
+$kalmar-energi-accent: mat-palette($brand-green, 500, 300, 700);
+
+// The warn palette is optional (defaults to red).
+$kalmar-energi-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$kalmar-energi-theme: mat-light-theme($kalmar-energi-primary, $kalmar-energi-accent, $kalmar-energi-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($kalmar-energi-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+// Importing Bootstrap (should always be loaded BEFORE any custome stylesheets).
+@import 'scss/bootstrap-grid.scss';
+
+// Global styles
+html, body { height: 100%; }
+body { margin: 0; font-family: Arial, sans-serif; }

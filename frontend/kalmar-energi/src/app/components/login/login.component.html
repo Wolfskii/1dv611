@@ -1,0 +1,19 @@
+<div class="login-wrapper">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Mina Sidor</mat-card-title>
+      <mat-card-subtitle>Logga in</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="tryLogin(loginForm.value)">
+        <mat-form-field class="full-width-input" appearance="fill">
+          <mat-label>Kundnummer</mat-label>
+          <input formControlName="customerNumber" matInput type="text">
+        </mat-form-field>
+        <div class="full-width-input">
+          <button type="submit" mat-raised-button color="primary">Logga in</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

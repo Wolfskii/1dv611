@@ -1,0 +1,41 @@
+<mat-sidenav-container class="full-height">
+  <mat-sidenav
+    #drawer
+    mode="side"
+    fixedInViewport="true"
+    [attr.role]="isHandset ? 'dialog' : 'navigation'"
+    [mode]="(isHandset | async)!.matches ? 'over' : 'side'"
+    [opened]="!(isHandset | async)!.matches">
+    <mat-toolbar color="primary" class="toolbar">
+      <mat-toolbar-row>
+        Meny
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <app-navigation></app-navigation>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="toolbar">
+      <mat-toolbar-row>
+        <button
+          type="button"
+          aria-label="Visa sidomeny"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="(isHandset | async)!.matches">
+          <mat-icon aria-label="Ikon för växling av sidomeny">menu</mat-icon>
+        </button>
+        <span class="spacer"></span>
+        <button
+          type="button"
+          aria-label="Logga ut"
+          mat-icon-button
+          (click)="logout()">
+          <mat-icon aria-label="Ikon för att logga ut">exit_to_app</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="router-outlet-container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

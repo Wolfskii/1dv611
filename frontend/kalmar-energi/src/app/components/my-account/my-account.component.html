@@ -1,0 +1,279 @@
+<form>
+    <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+    >
+        <h1>Min profil</h1>
+    </div>
+    <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+    >
+        <div
+            *ngIf="profile.Content.Customer.CustomerCode"
+            fxLayout="column"
+            class="column"
+        >
+            <form-field
+                label="Kundnummer"
+                inputValue="{{profile.Content.Customer.CustomerCode}}"
+            ></form-field>
+        </div>
+    </div>
+    <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+    >
+        <div
+            *ngIf="profile.Content.Customer.FirstName"
+            fxLayout="column"
+            class="column"
+        >
+            <form-field
+                label="Förnamn"
+                inputValue="{{profile.Content.Customer.FirstName}}"
+            ></form-field>
+        </div>
+        <div
+            *ngIf="profile.Content.Customer.LastName"
+            fxLayout="column"
+            class="column"
+        >
+            <form-field
+                label="Efternamn"
+                inputValue="{{profile.Content.Customer.LastName}}"
+            ></form-field>
+        </div>
+    </div>
+    <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+    >
+        <div
+            fxLayout="column"
+            class="column"
+        >
+            <form-field
+                label="Gatunamn"
+                inputValue="{{profile.Content.Customer.PostStreetName}}"
+            ></form-field>
+        </div>
+        <div
+            fxLayout="column"
+            class="column"
+        >
+            <form-field
+                *ngIf="profile.Content.Customer.PostStreetNumberSuffix"
+                label="Gatunummer"
+                inputValue="{{profile.Content.Customer.PostStreetQualifier + profile.Content.Customer.PostStreetNumberSuffix}}"
+            ></form-field>
+            <form-field
+                *ngIf="profile.Content.Customer.PostStreetQualifier"
+                label="Gatunummer"
+                inputValue="{{profile.Content.Customer.PostStreetQualifier}}"
+            ></form-field>
+        </div>
+        <div
+            *ngIf="profile.Content.Customer.PostApartmentNumber"
+            fxLayout="column"
+            class="column"
+        >
+            <form-field
+                label="Lägenhetsnummer"
+                inputValue="{{profile.Content.Customer.PostApartmentNumber}}"
+            ></form-field>
+        </div>
+        <div
+            *ngIf="profile.Content.Customer.PostFloorNumber"
+            fxLayout="column"
+            class="column"
+        >
+            <form-field
+                label="Våning"
+                inputValue="{{profile.Content.Customer.PostFloorNumber}}"
+            ></form-field>
+        </div>
+
+    </div>
+    <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+    >
+        <div
+            fxLayout="column"
+            class="column"
+        >
+            <form-field
+                label="Postnummer"
+                inputValue="{{profile.Content.Customer.PostZipCode}}"
+            ></form-field>
+        </div>
+        <div
+            fxLayout="column"
+            class="column"
+        >
+            <form-field
+                label="Stad"
+                inputValue="{{profile.Content.Customer.PostCity}}"
+            ></form-field>
+        </div>
+
+    </div>
+    <div
+        *ngIf="profile.Content.Customer.PostCountryName"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+    >
+        <div
+            fxLayout="column"
+            class="column"
+        >
+            <form-field
+                label="Land"
+                inputValue="{{profile.Content.Customer.PostCountryName}}"
+            ></form-field>
+        </div>
+    </div>
+    <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+    >
+        <div
+            fxLayout="column"
+            class="column"
+        >
+            <email-field
+                label="Epost"
+                [isRequired]="true"
+                email="{{profile.Content.Customer.Email1}}"
+                (emailChange)="onEmailChange($event)"
+            ></email-field>
+        </div>
+    </div>
+    <div
+        *ngIf="profile.Content.Customer.HomePhoneNumber"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+    >
+        <div
+            fxLayout="column"
+            class="column"
+        >
+            <form-field
+                label="Telefonnummer hem"
+                inputValue="{{profile.Content.Customer.HomePhoneNumber}}"
+            ></form-field>
+        </div>
+    </div>
+    <div
+        *ngIf="profile.Content.Customer.MobilePhoneNumber"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+    >
+        <div
+            fxLayout="column"
+            class="column"
+        >
+            <form-field
+                label="Mobiltelefon"
+                inputValue="{{profile.Content.Customer.MobilePhoneNumber}}"
+            ></form-field>
+        </div>
+    </div>
+    <div
+        *ngIf="profile.Content.Customer.BusinessPhoneNumber"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+    >
+        <div
+            fxLayout="column"
+            class="column"
+        >
+            <form-field
+                label="Företagstelefon"
+                inputValue="{{profile.Content.Customer.BusinessPhoneNumber}}"
+            ></form-field>
+        </div>
+    </div>
+    <div
+        *ngIf="invoiceAdress"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+    >
+        <h2>Faktureringsuppgifter</h2>
+    </div>
+    <div
+        *ngIf="invoiceAdress"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+    >
+        <div
+            fxLayout="column"
+            class="column"
+        >
+            <form-field
+                label="Address"
+                inputValue="{{invoiceAdress}}"
+            ></form-field>
+        </div>
+    </div>
+    <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+    >
+        <div
+            *ngIf="profile.Content.Customer.InvoiceZipCode"
+            fxLayout="column"
+            class="column"
+        >
+            <form-field
+                label="Postnummer"
+                inputValue="{{profile.Content.Customer.InvoiceZipCode}}"
+            ></form-field>
+        </div>
+        <div
+            *ngIf="profile.Content.Customer.InvoiceCity"
+            fxLayout="column"
+            class="column"
+        >
+            <form-field
+                label="Stad"
+                inputValue="{{profile.Content.Customer.InvoiceCity}}"
+            ></form-field>
+        </div>
+    </div>
+    <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+    >
+        <div
+            fxLayout="column"
+            class="column"
+        >
+            <button
+                mat-raised-button
+                color="primary"
+                (click)=onEditSave()
+            >
+                Spara ändringar
+            </button>
+        </div>
+    </div>
+    <div
+        class="successMessage"
+        [hidden]="!submitted"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+    >
+        <div
+            fxLayout="column"
+            class="column"
+        >
+            <mat-label>{{successMessage}}</mat-label>
+        </div>
+    </div>
+</form>
+
+<form>
+
+</form>
